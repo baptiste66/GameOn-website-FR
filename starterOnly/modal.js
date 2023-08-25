@@ -1,9 +1,10 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+  var x = document.querySelector(".main-navbar");
+
+  if (x.classList.contains("responsive")) {
+    x.classList.remove("responsive");
   } else {
-    x.className = "topnav";
+    x.classList.add("responsive");
   }
 }
 
@@ -11,6 +12,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));

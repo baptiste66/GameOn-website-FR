@@ -20,26 +20,36 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
-
 p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-
+button{
+ border: none;
+}
 img {
   padding-right: 1rem;
 }
 
+/*modification pour que le header reste aligner et respecte la maquette  */
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: 3.5%;
+  margin-bottom: 3.5%;
 }
+
 .header-logo {
-    float: left;
+  float: left;
+  margin-left: 3.5%;
 }
+
 .main-navbar {
-    float: right;
+  float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -51,7 +61,6 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
@@ -62,43 +71,56 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  /* Souligne le lien actif */
+  text-decoration: underline;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px) {
+  .topnav{
+    margin: 3.5%;
+    
+  }
   .topnav a {display: none;}
-  .topnav a.icon {
+  .topnav .icon {
+    color: #ff0000;
     float: right;
     display: block;
+    font-size: 20px;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
+  .main-navbar.responsive {
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    width: 50%; 
+    background-color: #fff; 
+    z-index: 1000;  }
+
+  .main-navbar.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
+    margin-top: 20px;
+    
   }
-  .topnav.responsive a {
+  .main-navbar.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
+  
 } 
 
 main {
