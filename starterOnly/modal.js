@@ -20,4 +20,16 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// Fermeture de la modale
+const modaleClose = document.querySelector(".close");
+
+modaleClose.addEventListener("click", () => {
+  close ()
+})
+
+function close() {
+  modalbg.style.display = "none";
+}
+
+//conditions du formulaires 
 
