@@ -37,15 +37,22 @@ img {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-top: 3.5%;
-  margin-bottom: 3.5%;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 1px 20px 15px;
+  margin-top: 52px;
+  margin-bottom: 50px;
 }
 
-.header-logo {
+.header-logo  {
   float: left;
-  margin-left: 3.5%;
+  z-index: 3;
 }
-
+  .main-navbar.responsive {
+    position: fixed;
+    bottom: 500px;
+    
+}
 .main-navbar {
   float: right;
 }
@@ -56,7 +63,7 @@ img {
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  margin: 5px;
+  margin: 5px 0px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -64,13 +71,13 @@ img {
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  
 }
 
-.topnav a.active {
+.topnav .list .active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  
   /* Souligne le lien actif */
   text-decoration: underline;
 }
@@ -81,44 +88,67 @@ img {
 
 @media screen and (max-width: 1120px) {
   .topnav{
-    margin: 3.5%;
-    
+    margin-top: 33px;
+  margin-bottom: 19px;
   }
   .topnav a {display: none;}
   .topnav .icon {
+    background-color: #ffffff;
     color: #ff0000;
     float: right;
     display: block;
-    font-size: 20px;
+    font-size: 30px;
+    
   }
-
   .main-navbar.responsive {
     position: fixed; 
     top: 0; 
     right: 0; 
-    width: 50%; 
-    background-color: #fff; 
-    z-index: 1000;  }
+    width: 35%; 
+    background-color: #ffffff; 
+    z-index: 2;  }
 
-  .main-navbar.responsive .icon {
-    position: absolute;
+  .main-navbar.responsive .icon {position: absolute;
+    display: block;
     right: 0;
-    top: 0;
-    margin-top: 20px;
-    
+    top: 39px;
+    padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 1px 20px 15px;
   }
+
   .main-navbar.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
+  .main-navbar.responsive .list{
+    margin-top: 100px;
+    z-index: 1;
+    margin-right: 20px;
+    margin-left: -50px;
+    background-color: #fff;
+  }
 }
 
  @media screen and (max-width: 540px) {
+
+  .main-navbar.responsive .list{
+    margin-top: 50px;}
+
   .topnav a {display: none;}
-  .topnav a.icon {
+  .topnav{
+    margin-top: 10px;
+  }
+  .main-navbar.responsive .icon {position: absolute;
+    top: 11px;
+  }
+  .topnav .icon { font-size: 100%;
     float: right;
     display: block;
+  }
+  .header-logo img {
+    width: 50%;
   }
   
 } 
@@ -189,10 +219,11 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  z-index: 5;
 }
 
 .content {
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -202,12 +233,13 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  padding-top: 5px;
+  
 }
 
 .modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
+  padding: 10px 8%;
+  margin: 0px auto;
 }
 
 label {
@@ -215,7 +247,7 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
 }
 input {
   padding: 8px;
@@ -461,6 +493,7 @@ input[data-error]::after {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
+  z-index: 1;
 }
 .hero-text {
   width: 146%;
@@ -500,15 +533,18 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
   .hero-section {
     display: block;
     box-shadow: unset;
   }
   .hero-content {
+    display: flex;
+    flex-direction: column;
     background: #fff;
     color: #000;
-    padding: 20px;
+    gap: 20px;
+    padding: 0;
   }
   .hero-content::after {
     content: unset;
@@ -519,6 +555,7 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    text-align: center;
   }
   .hero-text {
     width: unset;
@@ -536,6 +573,40 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+@media screen and (max-width: 540px) {
+  .hero-section{
+    margin-bottom: 0;
+  }
+  .content{
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+  .modal-body{
+    padding-top: 8px;
+    padding-bottom: 10px;
+    margin: 0px auto;
+  }
+  .hero-headline{
+    text-align: initial;
+    font-size: 30px;}
+
+    .hero-text  { margin-top: 0;
+      margin-right: 0;
+    font-size: 14px;
+    padding-right: 100px;
+  }
+  label{
+    margin-bottom: 0px;
+  }
+  .copyrights {
+    margin-top: 0;}
+}
+@media screen and (max-width: 400px) {
+  .copyrights{
+    margin-top: -80px;
   }
 }
 
