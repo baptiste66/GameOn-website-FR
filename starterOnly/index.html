@@ -61,7 +61,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event);"
             >
               <div
                 class="formData">
@@ -211,6 +211,12 @@
         </div>
       </div>
     </main>
+    <div class="modal_success">
+      <div class="modal_content">
+          <h2>Merci pour votre inscription</h2>
+          <button class="btn" type="button" aria-label="close modal">Fermer</button>
+      </div>
+  </div>
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2022, GameOn Inc.

@@ -518,6 +518,58 @@ input[data-error]::after {
   display: block;
   padding: 0;
 }
+
+.modal_success {
+  display: none;    
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(26, 39, 156, 0.4);
+  z-index: 5;
+}
+.modal_content{
+  width: 95%;
+  border-radius: 10px;
+  background: var(--dark-light);
+  color: var(--light);
+  animation: modalopen .4s ease-in-out;
+}
+.modal_content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  max-width: 600px;
+  background-color: #000000;
+}
+
+.modal_content h2{
+  text-align: center;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 100;
+  color: #ffffff;
+}
+.modal_content button{
+  min-width: 17rem;
+  width: 50%;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 15px 0;
+  font-size: clamp(1.8rem, 2.2vw, 2rem);
+  color:#ffffff;
+  background: #fe142f;
+  z-index: 100;
+}
+
+
 .copyrights {
   color: #fe142f;
   padding: 0;
