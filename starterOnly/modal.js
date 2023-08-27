@@ -49,6 +49,16 @@ const quantityField = document.querySelector('#quantity');
 const conditionsCheckbox = document.querySelector('#checkbox1');
 const cityCheckBox = document.querySelectorAll("input[name='location']");
 
+//message d'erreur 
+const message = {
+  name: 'Veuillez entrer 2 caractères ou plus pour le champ. ',
+  email: 'Vous devez entrer une adresse mail valide.',
+  birthdate: 'Vous devez entrer votre date de naissance.',
+  quantity: 'Vous devez choisir une quantité.',
+  city: 'Vous devez choisir une option.',
+  conditions: `Vous devez vérifier que vous acceptez les termes et conditions.`,
+};
+
 // vérifie input
 firstnameField.addEventListener('input', () => checkInputValue(regexName, firstnameField, message.name)); 
 lastnameField.addEventListener('input', () => checkInputValue(regexName, lastnameField, message.name));
@@ -58,33 +68,20 @@ quantityField.addEventListener('input', () => checkInputValue(regexQuantity, qua
 conditionsCheckbox.addEventListener('input', () => checkIfConditionsAccepted(conditionsCheckbox, message.conditions));
 cityCheckBox.forEach(radio => radio.addEventListener('change', () => checkIfCitySelected(cityCheckBox, message.city)));
 
-//dom element 
-const content = document.querySelector(".content");
-const modalSuccess = document.querySelector('.modal_success')
 
-// formulaire compare regex et input
-function validate(e) {
-    e.preventDefault();
-
-    
-    const isConditionsAccepted = checkIfConditionsAccepted(conditionsCheckbox, message.conditions);
-    const isCitySelected = checkIfCitySelected(cityCheckBox, message.city);
-    const isAgeSelected = checkAge(birthdateField, message.birthdate);
-    const isQuantityValid = checkInputValue(regexQuantity, quantityField, message.quantity);
-    const isEmailValid = checkInputValue(regexEmail, emailField, message.email);
-    const isLastNameValid = checkInputValue(regexName, lastnameField, message.name);
-    const isFirstNameValid = checkInputValue(regexName, firstnameField, message.name);
-
-    // si ok reset
-    if (isConditionsAccepted && isCitySelected && isAgeSelected && isQuantityValid && isEmailValid && isLastNameValid && isFirstNameValid) {
-        content.style.display = 'none';
-        modalSuccess.style.display = 'flex';
-        form.reset();
-    } 
+//message erreur
+ const setErrorMessage = (element, message) => {
+  element.parentElement.setAttribute('data-error-visible', 'true');
+  element.parentElement.setAttribute('data-error', message);
 };
 
+//cache le message 
+const hideErrorMessage = element => {
+  element.parentElement.removeAttribute('data-error-visible');
+  element.parentElement.removeAttribute('data-error');
+};
 
-// Check si les valeurs
+// Check si les valeurs ok
 function checkInputValue(regex, element, message) {
   const value = element.value;
   if (!value || !regex.test(value)) {
@@ -127,26 +124,33 @@ function checkIfCitySelected(cities, message) {
   return true;
 };
 
-//message erreur
- const setErrorMessage = (element, message) => {
-  element.parentElement.setAttribute('data-error-visible', 'true');
-  element.parentElement.setAttribute('data-error', message);
-};
-//cache le message 
-const hideErrorMessage = element => {
-  element.parentElement.removeAttribute('data-error-visible');
-  element.parentElement.removeAttribute('data-error');
+//dom element 
+const content = document.querySelector(".content");
+const modalSuccess = document.querySelector('.modal_success')
+
+// formulaire compare regex et input
+function validate(e) {
+    e.preventDefault();
+
+    const isConditionsAccepted = checkIfConditionsAccepted(conditionsCheckbox, message.conditions);
+    const isCitySelected = checkIfCitySelected(cityCheckBox, message.city);
+    const isAgeSelected = checkAge(birthdateField, message.birthdate);
+    const isQuantityValid = checkInputValue(regexQuantity, quantityField, message.quantity);
+    const isEmailValid = checkInputValue(regexEmail, emailField, message.email);
+    const isLastNameValid = checkInputValue(regexName, lastnameField, message.name);
+    const isFirstNameValid = checkInputValue(regexName, firstnameField, message.name);
+
+    // si ok reset
+    if (isConditionsAccepted && isCitySelected && isAgeSelected && isQuantityValid && isEmailValid && isLastNameValid && isFirstNameValid) {
+        content.style.display = 'none';
+        modalSuccess.style.display = 'flex';
+        form.reset();
+    } 
 };
 
 
-const message = {
-  name: 'Veuillez entrer 2 caractères ou plus pour le champ. ',
-  email: 'Vous devez entrer une adresse mail valide.',
-  birthdate: 'Vous devez entrer votre date de naissance.',
-  quantity: 'Vous devez choisir une quantité.',
-  city: 'Vous devez choisir une option.',
-  conditions: `Vous devez vérifier que vous acceptez les termes et conditions.`,
-};
+
+
 
 // Open / Close Modal Form
 
@@ -156,11 +160,12 @@ const btnSubmit = document.querySelectorAll(".btn-submit");
 btnSignup.forEach(btn => { btn.addEventListener('click', () => form.style.display = "flex") });
 
 
-// Send Form
+// valide Form
 form.addEventListener('submit', function(event) {
   validate(event);
 });
 
+//reset background et formulaire 
     document.querySelector('.btn').addEventListener('click', () => {
         modalbg.style.display = "none";
         modalSuccess.style.display = "none"; 
