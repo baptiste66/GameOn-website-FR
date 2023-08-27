@@ -10,6 +10,7 @@
 }
 /* Landing Page */
 
+
 body {
   margin: 0;
   display: flex;
@@ -30,8 +31,10 @@ button{
 img {
   padding-right: 1rem;
 }
+li{
+  list-style: none;
+}
 
-/*modification pour que le header reste aligner et respecte la maquette  */
 .topnav {
   display: flex;
   justify-content: space-between;
@@ -42,6 +45,12 @@ img {
   margin: 1px 20px 15px;
   margin-top: 52px;
   margin-bottom: 50px;
+}
+.topnav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .header-logo  {
@@ -77,9 +86,10 @@ img {
 .topnav .list .active {
   background-color: #ff0000;
   color: #ffffff;
-  
-  /* Souligne le lien actif */
   text-decoration: underline;
+}
+.list{
+margin-right: -50px;
 }
 
 .topnav .icon {
@@ -87,10 +97,21 @@ img {
 }
 
 @media screen and (max-width: 1120px) {
+  .list{
+    margin-right: 0px;
+  }
   .topnav{
     margin-top: 33px;
   margin-bottom: 19px;
   }
+
+  .topnav ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
   .topnav a {display: none;}
   .topnav .icon {
     background-color: #ffffff;
@@ -671,4 +692,3 @@ footer {
     opacity: 1;
   }
 }
-
