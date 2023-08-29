@@ -72,7 +72,7 @@ li{
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  margin: 5px 0px;
+  margin: 5px 2px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -99,6 +99,7 @@ margin-right: -50px;
 @media screen and (max-width: 1120px) {
   .list{
     margin-right: 0px;
+    
   }
   .topnav{
     margin-top: 33px;
@@ -112,7 +113,11 @@ margin-right: -50px;
     padding: 0;
   }
 
-  .topnav a {display: none;}
+  .topnav a {display: none;
+  margin-left: 0;
+margin-right: 0;
+margin-bottom: 0;}
+
   .topnav .icon {
     background-color: #ffffff;
     color: #ff0000;
@@ -121,21 +126,21 @@ margin-right: -50px;
     font-size: 30px;
     
   }
-  .main-navbar.responsive {
-    position: fixed; 
+  .main-navbar.responsive {  
+   position: absolute;
     top: 0; 
     right: 0; 
     width: 35%; 
     background-color: #ffffff; 
-    z-index: 2;  }
+    /*modif*/
+    z-index: 5;  }
 
   .main-navbar.responsive .icon {position: absolute;
     display: block;
     right: 0;
-    top: 39px;
     padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
+  top: 7px;
   }
 
   .main-navbar.responsive a {
@@ -143,11 +148,10 @@ margin-right: -50px;
     display: block;
     text-align: left;
   }
-  .main-navbar.responsive .list{
-    margin-top: 100px;
-    z-index: 1;
-    margin-right: 20px;
-    margin-left: -50px;
+  .main-navbar.responsive .list ul{position: absolute;
+    top: 71px;
+    right: 20px;
+    left: -50px;
     background-color: #fff;
   }
 }
@@ -162,7 +166,11 @@ margin-right: -50px;
     margin-top: 10px;
   }
   .main-navbar.responsive .icon {position: absolute;
-    top: 11px;
+    top: 2px;
+  }
+  .main-navbar.responsive .list ul{
+    top: 50px;
+    right: 0;
   }
   .topnav .icon { font-size: 100%;
     float: right;
@@ -664,7 +672,7 @@ footer {
   }
   .hero-headline{
     text-align: initial;
-    font-size: 30px;}
+    font-size: 38px;}
 
     .hero-text  { margin-top: 0;
       margin-right: 0;

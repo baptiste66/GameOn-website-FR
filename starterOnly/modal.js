@@ -19,6 +19,15 @@ const modalClose = document.querySelector(".close");
 const content = document.querySelector(".content");
 const modalSuccess = document.querySelector('.modal_success')
 const btnSubmit = document.querySelectorAll(".btn-submit");
+//message erreur 
+const message = {
+  NAME: 'Veuillez entrer 2 caractères ou plus pour le champ. ',
+  EMAIL: 'Vous devez entrer une adresse mail valide.',
+  BIRTHDATE: 'Vous devez entrer votre date de naissance.',
+  QUANTITY: 'Vous devez choisir une quantité.',
+  CITY: 'Vous devez choisir une option.',
+  CONDITIONS: `Vous devez vérifier que vous acceptez les termes et conditions.`,
+};
 
 // change Mytopnav by main-navbar for alignment
 function editNav() {
@@ -42,15 +51,7 @@ function launchModal() {
 // close modal
 modalClose.addEventListener("click", () => {modalbg.style.display = "none";})
 
-//message erreur 
-const message = {
-  NAME: 'Veuillez entrer 2 caractères ou plus pour le champ. ',
-  EMAIL: 'Vous devez entrer une adresse mail valide.',
-  BIRTHDATE: 'Vous devez entrer votre date de naissance.',
-  QUANTITY: 'Vous devez choisir une quantité.',
-  CITY: 'Vous devez choisir une option.',
-  CONDITIONS: `Vous devez vérifier que vous acceptez les termes et conditions.`,
-};
+
 
 //error message 
  const setErrorMessage = (element, message) => {
