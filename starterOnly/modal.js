@@ -35,10 +35,21 @@ function editNav() {
 
   if (x.classList.contains("responsive")) {
     x.classList.remove("responsive");
-  } else {
+  }
+   else {
     x.classList.add("responsive");
   }
 }
+
+// remove class responsive if use pc 
+function adjustNav() {
+  const x = document.querySelector(".main-navbar");
+  
+  if (x.classList.contains("responsive") && screen.width >= 1119) {
+    x.classList.remove("responsive");
+  }
+}
+window.addEventListener("resize", adjustNav);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
