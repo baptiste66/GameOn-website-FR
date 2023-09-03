@@ -111,8 +111,7 @@ function validate(e) {
 
 // Check value
 function checkValue(regex, element, message) {
-  const value = element.value;
-  if (!value || !regex.test(value)) {
+  if (!element.value || !regex.test(element.value)) {
       setErrorMessage(element, message);
       return false;
   } 
