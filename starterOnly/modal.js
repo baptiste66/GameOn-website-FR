@@ -41,7 +41,7 @@ function editNav() {
   }
 }
 
-// remove class responsive if use pc 
+// remove class responsive if 1119px 
 function adjustNav() {
   const x = document.querySelector(".main-navbar");
   
@@ -50,6 +50,7 @@ function adjustNav() {
   }
 }
 window.addEventListener("resize", adjustNav);
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -77,13 +78,13 @@ const hideErrorMessage = element => {
 };
 
 // check input
-firstnameField.addEventListener('input', () => checkInputValue(NAME_REGEX, firstnameField, message.NAME)); 
-lastnameField.addEventListener('input', () => checkInputValue(NAME_REGEX, lastnameField, message.NAME));
-emailField.addEventListener('input', () => checkInputValue(EMAIL_REGEX, emailField, message.EMAIL));
+firstnameField.addEventListener('input', () => checkValue(NAME_REGEX, firstnameField, message.NAME)); 
+lastnameField.addEventListener('input', () => checkValue(NAME_REGEX, lastnameField, message.NAME));
+emailField.addEventListener('input', () => checkValue(EMAIL_REGEX, emailField, message.EMAIL));
 birthdateField.addEventListener('input', () => checkAge(birthdateField, message.BIRTHDATE));
-quantityField.addEventListener('input', () => checkInputValue(QUANTITY_REGEX, quantityField, message.QUANTITY));
-conditionsCheckbox.addEventListener('input', () => checkIfConditionsAccepted(conditionsCheckbox, message.CONDITIONS));
-cityCheckBox.forEach(radio => radio.addEventListener('change', () => checkIfCitySelected(cityCheckBox, message.CITY)));
+quantityField.addEventListener('input', () => checkValue(QUANTITY_REGEX, quantityField, message.QUANTITY));
+conditionsCheckbox.addEventListener('input', () => checkConditionsAccepted(conditionsCheckbox, message.CONDITIONS));
+cityCheckBox.forEach(radio => radio.addEventListener('change', () => checkCitySelected(cityCheckBox, message.CITY)));
 
 
 
@@ -91,13 +92,13 @@ cityCheckBox.forEach(radio => radio.addEventListener('change', () => checkIfCity
 function validate(e) {
     e.preventDefault();
 
-    const isConditionsAccepted = checkIfConditionsAccepted(conditionsCheckbox, message.CONDITIONS);
-    const isCitySelected = checkIfCitySelected(cityCheckBox, message.CITY);
+    const isConditionsAccepted = checkConditionsAccepted(conditionsCheckbox, message.CONDITIONS);
+    const isCitySelected = checkCitySelected(cityCheckBox, message.CITY);
     const isAgeSelected = checkAge(birthdateField, message.BIRTHDATE);
-    const isQuantityValid = checkInputValue(QUANTITY_REGEX, quantityField, message.QUANTITY);
-    const isEmailValid = checkInputValue(EMAIL_REGEX, emailField, message.EMAIL);
-    const isLastNameValid = checkInputValue(NAME_REGEX, lastnameField, message.NAME);
-    const isFirstNameValid = checkInputValue(NAME_REGEX, firstnameField, message.NAME);
+    const isQuantityValid = checkValue(QUANTITY_REGEX, quantityField, message.QUANTITY);
+    const isEmailValid = checkValue(EMAIL_REGEX, emailField, message.EMAIL);
+    const isLastNameValid = checkValue(NAME_REGEX, lastnameField, message.NAME);
+    const isFirstNameValid = checkValue(NAME_REGEX, firstnameField, message.NAME);
 
     // if ok reset
     if (isConditionsAccepted && isCitySelected && isAgeSelected && isQuantityValid && isEmailValid && isLastNameValid && isFirstNameValid) {
@@ -109,7 +110,7 @@ function validate(e) {
 
 
 // Check value
-function checkInputValue(regex, element, message) {
+function checkValue(regex, element, message) {
   const value = element.value;
   if (!value || !regex.test(value)) {
       setErrorMessage(element, message);
@@ -130,7 +131,7 @@ function checkAge (element, message) {
 };
 
 // Check conditions 
- function checkIfConditionsAccepted(element, message) {
+ function checkConditionsAccepted(element, message) {
   if(!element.checked) {
       setErrorMessage(element, message);
       return false;
@@ -141,7 +142,7 @@ function checkAge (element, message) {
 
 
 // Check city
-function checkIfCitySelected(cities, message) {
+function checkCitySelected(cities, message) {
   const isChecked = Array.from(cities).some(radio => radio.checked);
   if (!isChecked) {
       setErrorMessage(cities[0], message);
