@@ -19,6 +19,7 @@ const modalClose = document.querySelector(".close");
 const content = document.querySelector(".content");
 const modalSuccess = document.querySelector('.modal_success')
 const btnSubmit = document.querySelectorAll(".btn-submit");
+
 //message erreur 
 const message = {
   NAME: 'Veuillez entrer 2 caractères ou plus pour le champ. ',
@@ -159,8 +160,6 @@ form.addEventListener('submit', function(event) {
 });
 
 document.querySelector('.btn').addEventListener('click', () => {
-  modalbg.style.display = "none";
-  modalSuccess.style.display = "none"; 
   resetForm();
   hideErrorMessage(firstnameField);
   hideErrorMessage(lastnameField);
